@@ -7,6 +7,13 @@
 # Distributed under terms of the MIT license.
 #
 
+OS=$(uname)
+echo $OS
+
+if [ "$OS" = 'Darwin' ]; then
+	brew install reattach-to-user-namespace
+fi
+
 TMUX_FOLDER="$HOME/.tmux"
 TMUX_CONFIG="$HOME/.tmux.conf"
 PLUGIN_FOLDER="./plugins"
