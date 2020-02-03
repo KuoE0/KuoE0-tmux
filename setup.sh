@@ -23,8 +23,6 @@ if [ -d "$PLUGIN_FOLDER" ]; then
 fi
 mkdir "$PLUGIN_FOLDER"
 
-git clone --depth 1 https://github.com/tmux-plugins/tpm plugins/tpm
-
 if [ -f "$TMUX_FOLDER" ]; then
 	rm "$TMUX_FOLDER"
 fi
@@ -34,5 +32,8 @@ if [ -f "$TMUX_CONFIG" ]; then
 	rm "$TMUX_CONFIG"
 fi
 ln -s "$PWD/tmux.conf" "$TMUX_CONFIG"
+
+git clone --depth 1 https://github.com/tmux-plugins/tpm $PLUGIN_FOLDER/tpm
+$PLUGIN_FOLDER/tpm/scripts/install_plugins.sh
 
 echo "Launch tmux and run <prefix+I> to install plugins..."
